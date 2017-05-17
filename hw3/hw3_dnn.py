@@ -35,13 +35,13 @@ x_label = np_utils.to_categorical(x_label, 7)
 
 model2 = Sequential()
 model2.add(Dense(units=512,activation='relu',input_dim=48*48))
-model2.add(Dense(units=512,activation='relu'))
-model2.add(Dense(units=512,activation='relu'))
+model2.add(Dense(units=256,activation='relu'))
+model2.add(Dense(units=256,activation='relu'))
 model2.add(Dense(units=7,activation='softmax'))
 model2.summary()
 
 model2.compile(loss='categorical_crossentropy',optimizer="adam",metrics=['accuracy'])
-model2.fit(x_train,x_label,batch_size=100,epochs=5)
+model2.fit(x_train,x_label,batch_size=100,epochs=10)
 
 score = model2.evaluate(x_train,x_label)
 print ('\nTrain Acc:', score[1])
